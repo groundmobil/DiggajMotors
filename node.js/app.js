@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/DiggajMotorsDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://connectstuti:AkhileshMahajan26@cluster0.cs5albf.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('MongoDB connection successful');
         app.listen(PORT, () => {
