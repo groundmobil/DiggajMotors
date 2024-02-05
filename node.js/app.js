@@ -14,14 +14,18 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb+srv://connectstuti:AkhileshMahajan26@cluster0.cs5albf.mongodb.net/DiggajMotorsDB
-', { useNewUrlParser: true, useUnifiedTopology: true })
+const atlasConnectionUri = 'mongodb+srv://connectstuti:AkhileshMahajan26@cluster0.cs5albf.mongodb.net/DiggajMotorsDB';
+mongoose.connect(atlasConnectionUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log('MongoDB connection successful');
+        console.log('MongoDB Atlas connection successful');
         app.listen(PORT, () => {
-            console.log('Server is running on http://localhost:${PORT}');
+            console.log(`Server is running on http://localhost:${PORT}`);
         });
     })
+    .catch((error) => {
+        console.error('MongoDB Atlas connection failed:', error);
+    });
+
     .catch((error) => {
         console.error('MongoDB connection failed:', error);
     });
